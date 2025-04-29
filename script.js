@@ -4,27 +4,49 @@ const jumlahMinumMl = 135;
 const tanggalSaatIni = new Date().toLocaleDateString();
 const maksInactiveDurasi = 24 * 60 * 60 * 1000;
 
-// Notifikasi setiap 1 jam
-function kirimNotifikasi() {
-    if(Notification.permission === "granted") {
-        new Notification("Waktunya minum!", {
-            body: "Jangan lupa minum 135 ml air sekarang.",
-            icon: "https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png"
-        });
-    }
-}
-
 function memintaIzinNotifikasi() {
     if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
                 console.log("Izin notifkasi sudah diberikan");
+                setInterval(kirimNotifikasi, 3600000);
             } else {
                 console.warn("Izin notfikasi ditolak");
             }
         });
+    } else {
+        setInterval(kirimNotifikasi, 3600000);
     }
 }
+
+// Notifikasi setiap 1 jam
+function kirimNotifikasi() {
+    const jamSekarang = new Date().getHours();
+
+    if (jamSekarang < 8 || jamSekarang > 22) return;
+
+    const pesanMotivasi = [
+        "Tubuhmu butuh air, ambil air sekarang!",
+        "Minum air biar tetap fokus",
+        "Jangn sampai Pio mati, ambil air sekarang!",
+        "Pio senang kalau Kamu minum air yan cukup",
+        "Tubuhmu membutuhkan 135 ml lagi"
+    ];
+    
+    const notifAcak = pesanMotivasi[Math.floor(Math.random() * pesanMotivasi.length)];
+
+    if(Notification.permission === "granted") {
+        new Notification("Waktunya minum!", {
+            body: notifAcak,
+            icon: "https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png"
+        });
+
+        if (navigator.vibrate) {
+            navigator.vibrate([200, 100, 200]);
+        }
+    }
+}
+
 
 function perbaruiKonsumsi() {
     konsumsiSaatIni += jumlahMinumMl;
@@ -33,8 +55,9 @@ function perbaruiKonsumsi() {
     document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
     document.getElementById("jumlahTersisa").innerText = tersisa;
 
-    localStorage.setItem("konsumsiSaatIni", konsumsiSaatIni)
+    document.getElementById("progressKonsumsi").value = konsumsiSaatIni;
 
+    localStorage.setItem("konsumsiSaatIni", konsumsiSaatIni)
     localStorage.setItem("waktuMinumTerakhir", new Date().getTime());
 
     const btn = document.getElementById("minumBtn");
@@ -49,6 +72,8 @@ function perbaruiKonsumsi() {
         alert("Selamat! Target konsumsi air telah tercapai!");
     }
 }
+
+
 
 function aktifkanTombol() {
     const btn = document.getElementById("minumBtn");
@@ -75,6 +100,7 @@ function cekStatusTombol() {
 
 function cekResetHarian() {
     const tanggalTersimpan = localStorage.getItem("tanggalTerakhirDiperbarui");
+    document.getElementById("progressKonsumsi").value = konsumsiSaatIni;
 
     if (tanggalTersimpan !== tanggalSaatIni) {
         localStorage.setItem("tanggalTerakhirDiperbarui", tanggalSaatIni);
@@ -96,7 +122,7 @@ function cekInactivity() {
     const gambarPio = document.getElementById("gambarPio")
 
     if (waktuSaatIni - waktuMinumTerakhir > maksInactiveDurasi) {
-        statusElement.innerText = "Pio mati, kamu belum minum lebih dari 24 jam, silahkana ambil gelas lalu tuangkan airnya."
+        statusElement.innerText = "Pio mati, Kamu belum minum lebih dari 24 jam, silahkan ambil gelas lalu tuangkan airnya."
         statusElement.style.color = "red";
         gambarPio.src = "https://raw.githubusercontent.com/aflacake/piodrink/main/img/piomati.png";
     } else {
@@ -109,20 +135,17 @@ function cekInactivity() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-memintaIzinNotifikasi();
-
-cekResetHarian();
-
-cekStatusTombol();
-
-cekInactivity();
-setInterval(cekInactivity, 5000);
-
-document.getElementById("minumBtn").addEventListener("click", function() {
     memintaIzinNotifikasi();
-    perbaruiKonsumsi();
-});
 
-// Set notifikasi setiap 1 jam (3600000 ms = 1 jam)
-setInterval(kirimNotifikasi, 3600000);
+    cekResetHarian();
+
+    cekStatusTombol();
+
+    cekInactivity();
+    setInterval(cekInactivity, 5000);
+
+    document.getElementById("minumBtn").addEventListener("click", function() {
+        memintaIzinNotifikasi();
+        perbaruiKonsumsi();
+    });
 });
