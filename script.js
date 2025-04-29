@@ -3,19 +3,24 @@ const target = 2025;
 const jumlahMinumMl = 135;
 const tanggalSaatIni = new Date().toLocaleDateString();
 const maksInactiveDurasi = 24 * 60 * 60 * 1000;
+let notifInterval;
 
 function memintaIzinNotifikasi() {
     if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
                 console.log("Izin notifkasi sudah diberikan");
-                setInterval(kirimNotifikasi, 3600000);
+                if (!notifInterval) {
+                    notifInterval = setInterval(kirimNotifikasi, 3600000);
+                }
             } else {
                 console.warn("Izin notfikasi ditolak");
             }
         });
     } else {
-        setInterval(kirimNotifikasi, 3600000);
+        if (!notifInterval) {
+            notifInterval = setInterval(kirimNotifikasi, 3600000);
+        }
     }
 }
 
@@ -54,7 +59,6 @@ function perbaruiKonsumsi() {
 
     document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
     document.getElementById("jumlahTersisa").innerText = tersisa;
-
     document.getElementById("progressKonsumsi").value = konsumsiSaatIni;
 
     localStorage.setItem("konsumsiSaatIni", konsumsiSaatIni)
@@ -119,7 +123,7 @@ function cekInactivity() {
     const waktuMinumTerakhir = parseInt(localStorage.getItem("waktuMinumTerakhir") || 0);
     const waktuSaatIni = new Date().getTime();
     const statusElement = document.getElementById("status");
-    const gambarPio = document.getElementById("gambarPio")
+    const gambarPio = document.getElementById("gambarPio");
 
     if (waktuSaatIni - waktuMinumTerakhir > maksInactiveDurasi) {
         statusElement.innerText = "Pio mati, Kamu belum minum lebih dari 24 jam, silahkan ambil gelas lalu tuangkan airnya."
