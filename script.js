@@ -15,10 +15,12 @@ function kirimNotifikasi() {
 }
 
 function memintaIzinNotifikasi() {
-    if (Notification.permission !== "default") {
+    if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
                 console.log("Izin notifkasi sudah diberikan");
+            } else {
+                console.warn("Izin notfikasi ditolak");
             }
         });
     }
@@ -116,7 +118,10 @@ cekStatusTombol();
 cekInactivity();
 setInterval(cekInactivity, 5000);
 
-document.getElementById("minumBtn").addEventListener("click", perbaruiKonsumsi);
+document.getElementById("minumBtn").addEventListener("click", function() {
+    memintaIzinNotifikasi();
+    perbaruiKonsumsi();
+});
 
 // Set notifikasi setiap 1 jam (3600000 ms = 1 jam)
 setInterval(kirimNotifikasi, 3600000);
