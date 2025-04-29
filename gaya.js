@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector("header").style.borderBottom = "8px solid #80ff80"
     document.querySelector("header").style.padding = '20px';
     document.querySelector("header > p").style.marginTop = '-20px';
-    document.querySelector("header").style.color = "black";
+    document.querySelector("header").style.color = "#80ff80";
     document.querySelector("header").style.backgroundColor = "#01b23b";
     
     
