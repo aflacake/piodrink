@@ -38,7 +38,7 @@ function perbaruiKonsumsi() {
     localStorage.setItem("waktuMinumTerakhir", new Date().getTime());
 
     const btn = document.getElementById("minumBtn");
-    btn.disbled = true;
+    btn.disabled = true;
     btn.innerText = "Tunggu 1 jam...";
     localStorage.setItem("tombolDisabledSampai", new Date().getTime() + 3600000);
 
@@ -53,7 +53,7 @@ function perbaruiKonsumsi() {
 function aktifkanTombol() {
     const btn = document.getElementById("minumBtn");
     btn.disabled = false;
-    btn.inneText = "Beri Pio Minum";
+    btn.innerText = "Beri Pio Minum";
 }
 
 function cekStatusTombol() {
@@ -63,7 +63,7 @@ function cekStatusTombol() {
     const btn = document.getElementById("minumBtn");
 
     if (sekarang < waktuSimpan) {
-        btn.disaled = true;
+        btn.disabled = true;
         btn.innerText = "Tunggu 1 jam...";
 
         setTimeout(aktifkanTombol, waktuSimpan - sekarang);
