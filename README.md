@@ -1,3 +1,5 @@
+<img src="https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png" width="300" height="300"/>
+
 # Piodrink - Minum Air Putih
 Pengingat air putih yang disiplin teratur dengan jadwal dan pengkondisian setelan notifikasi otomatis mengingat Anda kepada jadwal minum yang tidak pernah ditinggalkan secara tertib. Sekarang pengingat air minum di genggaman tangan Anda yang ringan juga tanpa perlu menginstal!
 
