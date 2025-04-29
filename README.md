@@ -5,5 +5,13 @@ Pengingat air putih yang disiplin teratur dengan jadwal dan pengkondisian setela
 
 Piodrink mengingat jadwal mimum secara waktu dari waktu, 1 jam dengan 135 ml setara dengan 15 jam yaitu target air putih Anda adalah 2.025 ml. Pio akan mati jika Anda tidak segera mengambil tindakan air putih Anda. Pulihkan tubuh Anda segara!
 
+# Instalasi
+Aplikasi: aplikasi-web
+> Tidak membutuhkan yang diperlukan, deploy halaman disiapkan atau unduh paket tertera.
+
+Deploy:  **https://aflacake.github.io/piodrink/**
+
+Online/offline: online dan offline
+
 # Berkontribusi
 Ini adalah proyek mandiriku, _fork_ jika dirasa masih ada perlu penambahan penyesuaian kode dan beri sumbangan kode apapun itu diterima.
