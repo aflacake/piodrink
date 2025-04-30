@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
    linkNavbar.forEach(link => {
        link.style.display = "block";
        link.style.width = '100%';
-       link.style.padding = '10px';
+       link.style.paddingTop = '20px';
        link.style.color = "";
        link.style.textDecoration = "none";
        
@@ -44,6 +44,12 @@ document.addEventListener('DOMContentLoaded', function () {
            link.style.backgroundColor = "transparent";
        });
    });
+
+    const navbarAirPutih = document.getElementById("navbarAirPutih");
+    navbarAirPutih.style.display = "block";
+    navbarAirPutih.style.marginTop = '50vh';
+    navbarAirPutih.style.width = '100%';
+    navbarAirPutih.style.paddingTop = '20px';
 
     const kontenTentang = document.querySelector(".tentang");
     kontenTentang.style.padding = '20px';
