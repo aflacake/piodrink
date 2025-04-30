@@ -116,6 +116,7 @@ function cekResetHarian() {
         konsumsiSaatIni = parseInt(localStorage.getItem("konsumsiSaatIni") ||0);
         document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
         document.getElementById("jumlahTersisa").innerText = target - konsumsiSaatIni;
+        document.getElementById("progressKonsumsi").value = konsumsiSaatIni;
     }
 }
 
