@@ -1,0 +1,16 @@
+/* tidak ada koneksi */
+#tidakAdaKoneksi {
+    display: none;
+    color: white;
+    background-color: salmon;
+    font-size: 16px;
+    text-align: center;
+}
+
+.content {
+    margin-right: 60px;
+}
+
+progress::webkit-progress-value {
+    backgroud-color: var(--progress-bar-color)
+}
