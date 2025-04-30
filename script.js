@@ -74,6 +74,9 @@ function perbaruiKonsumsi() {
     // jika target tercapai
     if (konsumsiSaatIni >= target) {
         alert("Selamat! Target konsumsi air telah tercapai!");
+
+        const gambarPio = document.getElementById("gambarPio");
+        gambarPio.src = "https://raw.githubusercontent.com/aflacake/piodrink/second/img/piotanamanmerah.png";
     }
 }
 
