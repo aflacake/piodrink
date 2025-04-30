@@ -4,6 +4,38 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.fontFamily = "Times New Roman";
     document.body.style.backgroundColor = "";
 
+   
+   const navbar = document.getElementById("navbar");
+   
+   navbar.style.display = "flex";
+   navbar.style.flexDirection = "column";
+   navbar.style.width = '50px';
+   navbar.style.padding = '10px';
+   navbar.style.height = '100vh';
+   navbar.style.top = '0';
+   navbar.style.right = '0';
+   navbar.style.backgroundColor = "white";
+   navbar.style.justifyContent = "flex-start";
+   navbar.style.alignItems = "flex-start";
+   navbar.style.position = "fixed";
+   
+   const linkNavbar = navbar.querySelectorAll("a");
+   linkNavbar.forEach(link => {
+       link.style.display = "block";
+       link.style.width = '100%';
+       link.style.padding = '10px';
+       link.style.color = "";
+       link.style.textDecoration = "none";
+       
+       // Efek hover
+       link.addEventListener("mouseover", () => {
+           link.style.backgroundColor = "white";
+       });
+       link.addEventListener("mouseout", () => {
+           link.style.backgroundColor = "transparent";
+       });
+   });
+
     document.querySelector("header").style.display = "flex";
     document.querySelector("header").style.flexDirection = "column"
     document.querySelector("header").style.textAlign = "center";
@@ -46,12 +78,39 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
     const gambarPio = document.getElementById("gambarPio");
-    
+    gambarPio.style.position = "relative";
+    gambarPio.style.transition = "transform 0.3s ease";    
+
     gambarPio.addEventListener("mouseenter", function() {
         gambarPio.style.transform = "scale(1.5)"
     });
     gambarPio.addEventListener("mouseleave", function() {
         gambarPio.style.transform = "scale(1)"
+    });
+
+    let posisiGambarPio = 30;
+    let arahGambarPio = 0.5;
+    const kecepatanGambarPio = 1;
+    const batasAtasGambarPio = 0;
+    const batasBawahGambarPio = 40;
+
+    function animasiNaikTurun() {
+        posisiGambarPio += arahGambarPio * kecepatanGambarPio;
+
+        if (posisiGambarPio >= batasBawahGambarPio || posisiGambarPio <= batasAtasGambarPio) {
+            arahGambarPio *= -1;
+        }
+        gambarPio.style.top = posisiGambarPio + "px";
+        requestAnimationFrame(animasiNaikTurun);
+    }
+    window.onload = animasiNaikTurun;
+
+
+    const progressKonsumsi = document.getElementById("progressKonsumsi");
+    progressKonsumsi.style.setProperty('--progress-bar-color', '#404040');
+
+    progressKonsumsi.addEventListener("input", function() {
+        progressKonsumsi.style.setProperty('--progress-bar-color', '#80ff80');
     });
 
     const minumBtn = document.getElementById("minumBtn");
@@ -73,23 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         perbaruiKonsumsi();
     });
-    
-    const kontenPertanyaan = document.querySelector(".pertanyaan");
-    kontenPertanyaan.style.padding = '20px';
-    kontenPertanyaan.style.margin = '20px';
-    kontenPertanyaan.style.border = "2px solid #ccc";
-    kontenPertanyaan.style.borderRadius = '15px';
-
-    const daftarPertanyaan = document.getElementById("daftarPertanyaan");
-    daftarPertanyaan.style.listStyle = "none";
-
-    const itemDaftarPertanyaan = daftarPertanyaan.getElementsByTagName("li");
-    for (let i = 0; i < itemDaftarPertanyaan.length; i++) {
-        const teksAsli = itemDaftarPertanyaan[i].textContent?.trim();
-            if (teksAsli) {
-                itemDaftarPertanyaan[i].textContent = `${i + 1}. ${teksAsli}`;
-        }
-    }
     
     
     document.querySelector("footer").style.padding = '20px';
