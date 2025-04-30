@@ -48,7 +48,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const kontenTentang = document.querySelector(".tentang");
     kontenTentang.style.padding = '20px';
     kontenTentang.style.margin = '20px';
-    kontenTentang.style.textDecoration = "none";
+    
+    const tautan = document.querySelectorAll(".tentang a");
+    tautan.forEach(link => {
+        link.style.textDecoration = "none";
+        link.style.color = "#01b23b";
+    });
 
     document.querySelector("footer").style.padding = '20px';
     document.querySelector("footer").style.color = "#80ff80";
