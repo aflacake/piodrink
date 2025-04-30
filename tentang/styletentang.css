@@ -1,0 +1,7 @@
+.content {
+    margin-right: 60px;
+}
+
+progress::webkit-progress-value {
+    backgroud-color: var(--progress-bar-color)
+}
