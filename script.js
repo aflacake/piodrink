@@ -74,9 +74,9 @@ function perbaruiKonsumsi() {
     localStorage.setItem("konsumsiSaatIni", konsumsiSaatIni);
     localStorage.setItem("waktuMinumTerakhir", new Date().getTime());
 
-    const btn = document.getElementById("minumBtn");
-    btn.disabled = true;
-    btn.innerText = "Tunggu 1 jam...";
+    const perbaruBtn = document.getElementById("minumBtn");
+    perbaruBtn.disabled = true;
+    perbaruBtn.innerText = "Tunggu 1 jam...";
     localStorage.setItem("tombolDisabledSampai", new Date().getTime() + 3600000);
 
     setTimeout(aktifkanTombol, 3600000);
