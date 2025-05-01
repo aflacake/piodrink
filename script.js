@@ -6,6 +6,9 @@ const maksInactiveDurasi = 24 * 60 * 60 * 1000;
 let notifInterval;
 
 function memintaIzinNotifikasi() {
+    if (notifInterval) {
+        clearInterval(notifInterval);
+    }
     if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
@@ -68,7 +71,7 @@ function perbaruiKonsumsi() {
     document.getElementById("jumlahTersisa").innerText = tersisa;
     document.getElementById("progressKonsumsi").value = konsumsiSaatIni;
 
-    localStorage.setItem("konsumsiSaatIni", konsumsiSaatIni)
+    localStorage.setItem("konsumsiSaatIni", konsumsiSaatIni);
     localStorage.setItem("waktuMinumTerakhir", new Date().getTime());
 
     const btn = document.getElementById("minumBtn");
@@ -104,9 +107,9 @@ function perbaruiKonsumsi() {
 
 
 function aktifkanTombol() {
-    const btn = document.getElementById("minumBtn");
-    btn.disabled = false;
-    btn.innerText = "Beri Pio Minum";
+    const minumBtn = document.getElementById("minumBtn");
+    minumBtn.disabled = false;
+    minumBtn.innerText = "Beri Pio Minum";
 }
 
 function cekStatusTombol() {
@@ -140,6 +143,10 @@ function cekResetHarian() {
         document.getElementById("jumlahTersisa").innerText = target;
     } else {
         konsumsiSaatIni = parseInt(localStorage.getItem("konsumsiSaatIni") ||0);
+        if (isNaN(konsumsiSaatIni)) {
+            konsumsiSaatIni = 0;
+        }
+
         document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
         document.getElementById("jumlahTersisa").innerText = target - konsumsiSaatIni;
         document.getElementById("progressKonsumsi").value = konsumsiSaatIni;
@@ -179,7 +186,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(cekInactivity, 5000);
 
     document.getElementById("minumBtn").addEventListener("click", function() {
-        memintaIzinNotifikasi();
         perbaruiKonsumsi();
     });
 });
