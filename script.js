@@ -27,8 +27,12 @@ function memintaIzinNotifikasi() {
 // Notifikasi setiap 1 jam
 function kirimNotifikasi() {
     const jamSekarang = new Date().getHours();
+    console.log("Jam sekarang", jamSekarang);
 
-    if (jamSekarang < 8 || jamSekarang > 22) return;
+    if (jamSekarang < 8 || jamSekarang > 22) {
+        console.log("Notifikasi hanya aktif antara jam 8 pagi dan 10 malam");
+        return;
+    }
 
     const pesanMotivasi = [
         "Tubuhmu butuh air, ambil air sekarang!",
@@ -39,6 +43,7 @@ function kirimNotifikasi() {
     ];
     
     const notifAcak = pesanMotivasi[Math.floor(Math.random() * pesanMotivasi.length)];
+    console.log("Pesan Notifikasi:", notifAcak);
 
     if(Notification.permission === "granted") {
         new Notification("Waktunya minum!", {
@@ -49,6 +54,8 @@ function kirimNotifikasi() {
         if (navigator.vibrate) {
             navigator.vibrate([200, 100, 200]);
         }
+    } else {
+        console.log("Izin notifikasi tidak diberikan");
     }
 }
 
