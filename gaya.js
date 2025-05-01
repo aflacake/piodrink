@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuTanaman = document.querySelector(".menuTanaman");
     menuTanaman.style.padding = '20px';
     menuTanaman.style.margin = '20px';
-    menuTanaman.style.backgroundColor = "white";
 
     const analitikTanaman = document.getElementById("analitikTanaman");
     analitikTanaman.style.padding = '20px';
