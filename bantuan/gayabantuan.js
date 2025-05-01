@@ -4,19 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.fontFamily = "Times New Roman";
     document.body.style.backgroundColor = "";
 
-    document.querySelector("header").style.display = "flex";
-    document.querySelector("header").style.flexDirection = "column"
-    document.querySelector("header").style.textAlign = "center";
-    document.querySelector("header").style.justifyContent = "center";
-    document.querySelector("header").style.borderBottom = "8px solid #80ff80"
-    document.querySelector("header").style.padding = '20px';
-    document.querySelector("header > p").style.marginTop = '-20px';
-    document.querySelector("header").style.color = "#80ff80";
-    document.querySelector("header").style.backgroundColor = "#01b23b";
-
    const navbar = document.getElementById("navbar");
    
    navbar.style.display = "flex";
+   navbar.style.position = "fixed";
    navbar.style.flexDirection = "column";
    navbar.style.width = '50px';
    navbar.style.padding = '10px';
@@ -26,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
    navbar.style.backgroundColor = "white";
    navbar.style.justifyContent = "flex-start";
    navbar.style.alignItems = "flex-start";
-   navbar.style.position = "fixed";
+   navbar.style.borderLeft = "1px solid #ccc";
    
    const linkNavbar = navbar.querySelectorAll("a");
    linkNavbar.forEach(link => {
@@ -50,6 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
     navbarAirPutih.style.marginTop = '50vh';
     navbarAirPutih.style.width = '100%';
     navbarAirPutih.style.paddingTop = '20px';
+
+    document.querySelector("header").style.display = "flex";
+    document.querySelector("header").style.flexDirection = "column"
+    document.querySelector("header").style.textAlign = "center";
+    document.querySelector("header").style.justifyContent = "center";
+    document.querySelector("header").style.borderBottom = "8px solid #80ff80"
+    document.querySelector("header").style.padding = '20px';
+    document.querySelector("header > p").style.marginTop = '-20px';
+    document.querySelector("header").style.color = "#80ff80";
+    document.querySelector("header").style.backgroundColor = "#01b23b";
 
     const kontenPertanyaan = document.querySelector(".pertanyaan");
     kontenPertanyaan.style.padding = '20px';

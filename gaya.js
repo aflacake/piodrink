@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
    const navbar = document.getElementById("navbar");
    
    navbar.style.display = "flex";
+   navbar.style.position = "fixed";
    navbar.style.flexDirection = "column";
    navbar.style.width = '50px';
    navbar.style.padding = '10px';
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
    navbar.style.backgroundColor = "white";
    navbar.style.justifyContent = "flex-start";
    navbar.style.alignItems = "flex-start";
-   navbar.style.position = "fixed";
+   navbar.style.borderLeft = "1px solid #ccc"
    
    const linkNavbar = navbar.querySelectorAll("a");
    linkNavbar.forEach(link => {
@@ -124,8 +125,8 @@ document.addEventListener('DOMContentLoaded', function () {
     minumBtn.style.marginBottom = '40px';
     minumBtn.style.fontFamily = "Times New Roman";
     minumBtn.style.fontSize = '24px';
-    minumBtn.style.color = "#80ff80"; 
-    minumBtn.style.backgroundColor = "#01b23b";
+    minumBtn.style.color = "#E0FFFF"; 
+    minumBtn.style.backgroundColor = "#00BFFF";
     minumBtn.style.border = "none";
     minumBtn.style.borderRadius = '15px';
 
@@ -138,6 +139,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         perbaruiKonsumsi();
     });
+    
+    const menuTanaman = document.querySelector(".menuTanaman");
+    menuTanaman.style.padding = '20px';
+    menuTanaman.style.margin = '20px';
+
+    const analitikTanaman = document.getElementById("analitikTanaman");
+    analitikTanaman.style.padding = '20px';
+    analitikTanaman.style.border = "2px solid #ccc";
+    analitikTanaman.style.borderRadius = '15px';
+    
     
     
     document.querySelector("footer").style.padding = '20px';

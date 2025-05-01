@@ -75,8 +75,22 @@ function perbaruiKonsumsi() {
     if (konsumsiSaatIni >= target) {
         alert("Selamat! Target konsumsi air telah tercapai!");
 
+        document.getElementById("progressKonsumsi").value = target;
+
         const gambarPio = document.getElementById("gambarPio");
         gambarPio.src = "https://raw.githubusercontent.com/aflacake/piodrink/second/img/piotanamanmerah.png";
+
+        const btn = document.getElementById("minumBtn");
+        btn.disabled = true;
+        btn.innerText = "Target tercapai";
+
+        let jumlahTanaman = parseInt(localStorage.getItem("jumlahTanaman") || 0);
+        jumlahTanaman += 1;
+        localStorage.setItem("jumlahTanaman", jumlahTanaman);
+        document.getElementById("jumlahTanaman").innerText = jumlahTanaman;
+
+        localStorage.setItem("tombolDisabledSampai", Infinity);
+        return;
     }
 }
 
@@ -108,6 +122,8 @@ function cekStatusTombol() {
 function cekResetHarian() {
     const tanggalTersimpan = localStorage.getItem("tanggalTerakhirDiperbarui");
     document.getElementById("progressKonsumsi").value = konsumsiSaatIni;
+    document.getElementById("progressKonsumsi").max = target;
+
 
     if (tanggalTersimpan !== tanggalSaatIni) {
         localStorage.setItem("tanggalTerakhirDiperbarui", tanggalSaatIni);
@@ -144,6 +160,8 @@ function cekInactivity() {
 
 document.addEventListener('DOMContentLoaded', function () {
     memintaIzinNotifikasi();
+
+    document.getElementById("jumlahTanaman").innerText = localStorage.getItem("jumlahTanaman") || 0;
 
     cekResetHarian();
 
