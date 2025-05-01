@@ -143,9 +143,6 @@ function cekResetHarian() {
         document.getElementById("jumlahTersisa").innerText = target;
     } else {
         konsumsiSaatIni = parseInt(localStorage.getItem("konsumsiSaatIni") ||0);
-        if (isNaN(konsumsiSaatIni)) {
-            konsumsiSaatIni = 0;
-        }
 
         document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
         document.getElementById("jumlahTersisa").innerText = target - konsumsiSaatIni;
@@ -174,6 +171,7 @@ function cekInactivity() {
 
 document.addEventListener('DOMContentLoaded', function () {
     memintaIzinNotifikasi();
+    kirimNotifikasi();
 
     document.getElementById("jumlahTanaman").innerText = localStorage.getItem("jumlahTanaman") || 0;
 
