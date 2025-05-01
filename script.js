@@ -162,7 +162,7 @@ function cekInactivity() {
         gambarPio.src = "https://raw.githubusercontent.com/aflacake/piodrink/main/img/piomati.png";
     } else {
         statusElement.innerText = "Pio masih hidup, teruskan pertahankan runtuhan air minum dalam jam tertibmu ini";
-        statusElement.style.color = "#01b23b";
+        statusElement.style.color = "black";
         gambarPio.src = "https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png";
     }
 }

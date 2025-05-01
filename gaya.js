@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.margin = '0';
     document.body.style.padding = '0';
     document.body.style.fontFamily = "Times New Roman";
-    document.body.style.backgroundColor = "";
+    const gambarLb = 'https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakang.png';
+    document.body.style.backgroundImage = `url(${gambarLb})`;
 
    
    const navbar = document.getElementById("navbar");
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
    navbar.style.backgroundColor = "white";
    navbar.style.justifyContent = "flex-start";
    navbar.style.alignItems = "flex-start";
-   navbar.style.borderLeft = "1px solid #ccc"
+   navbar.style.borderLeft = "1px solid #ccc";
    
    const linkNavbar = navbar.querySelectorAll("a");
    linkNavbar.forEach(link => {
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const kontenPio = document.querySelector(".konten");
     kontenPio.style.padding = '20px';
     kontenPio.style.margin = '20px';
-    kontenPio.style.backgroundColor = "";
+    kontenPio.style.backgroundColor = "white";
     kontenPio.style.border = "2px solid #ccc"
     kontenPio.style.borderRadius = '15px';
     
@@ -143,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuTanaman = document.querySelector(".menuTanaman");
     menuTanaman.style.padding = '20px';
     menuTanaman.style.margin = '20px';
+    menuTanaman.style.backgroundColor = "white";
 
     const analitikTanaman = document.getElementById("analitikTanaman");
     analitikTanaman.style.padding = '20px';
