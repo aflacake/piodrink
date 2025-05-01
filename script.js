@@ -174,7 +174,6 @@ function cekInactivity() {
 
 document.addEventListener('DOMContentLoaded', function () {
     memintaIzinNotifikasi();
-    kirimNotifikasi();
 
     document.getElementById("jumlahTanaman").innerText = localStorage.getItem("jumlahTanaman") || 0;
 
