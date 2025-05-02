@@ -1,4 +1,4 @@
-<p align="right">Bahasa Indonesia</p>
+<p align="right">Bahasa: Indonesia</p>
 
 <img src="https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png" width="300" height="300"/>
 
