@@ -14,9 +14,3 @@ checkConnection();
 window.addEventListener('online', checkConnection);
 window.addEventListener('offline', checkConnection);
 });
-
-// Keluar dari aplikasi
-window.addEventListener("beforeunload", function (e) {
-    e.preventDefault();
-    e.returnValue = '';
-})
