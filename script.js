@@ -17,7 +17,7 @@ if ('serviceWorker' in navigator) {
 let konsumsiSaatIni = 0;
 const target = 2025;
 const jumlahMinumMl = 135;
-const tanggalSaatIni = new Date().toLocaleDateString();
+const tanggalSaatIni = new Date().toLocaleDateString().split("T")[0];
 const maksInactiveDurasi = 24 * 60 * 60 * 1000;
 let notifInterval;
 
@@ -64,10 +64,12 @@ function kirimNotifikasi() {
     const notifAcak = pesanMotivasi[Math.floor(Math.random() * pesanMotivasi.length)];
     console.log("Pesan Notifikasi:", notifAcak);
 
-    if(Notification.permission === "granted") {
-        new Notification("Waktunya minum!", {
-            body: notifAcak,
-            icon: "https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png"
+    if(Notification.permission === "granted" && navigator.serviceWorker) {
+        navigator.serviceWorker.ready.then(registration => {
+            registration.showNotification("Waktunya minum!", {
+                body: notifAcak,
+                icon: "https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png"
+            });
         });
 
         if (navigator.vibrate) {
@@ -79,8 +81,9 @@ function kirimNotifikasi() {
 }
 
 
-function perbaruiKonsumsi() {
+async function perbaruiKonsumsi() {
     konsumsiSaatIni += jumlahMinumMl;
+    await simpanKonsumsiHarian(jumlahMinumMl);
 
     let totalKonsumsi = parseInt(localStorage.getItem("totalKonsumsi") || 0);
     totalKonsumsi += jumlahMinumMl;
@@ -164,7 +167,8 @@ function cekResetHarian() {
         document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
         document.getElementById("jumlahTersisa").innerText = target;
     } else {
-        konsumsiSaatIni = parseInt(localStorage.getItem("konsumsiSaatIni") ||0);
+        let data = parseInt(localStorage.getItem("konsumsiSaatIni"));
+        konsumsiSaatIni = isNaN(data) ? 0 : data;
 
         document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
         document.getElementById("jumlahTersisa").innerText = target - konsumsiSaatIni;
