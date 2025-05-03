@@ -130,16 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
     minumBtn.style.backgroundColor = "#00BFFF";
     minumBtn.style.border = "none";
     minumBtn.style.borderRadius = '15px';
-
-    const suaraAir = document.getElementById("suaraAir");
-    suaraAir.style.display = "none";
-
-    minumBtn.addEventListener("click", function() {
-        suaraAir.currentTime = 0;
-        suaraAir.play();
-
-        await perbaruiKonsumsi();
-    });
     
     const menuTanaman = document.querySelector(".menuTanaman");
     menuTanaman.style.padding = '20px';
