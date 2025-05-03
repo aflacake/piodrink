@@ -40,7 +40,7 @@ function kirimNotifikasi() {
     const pesanMotivasi = [
         "Tubuhmu butuh air, ambil air sekarang!",
         "Minum air biar tetap fokus",
-        "Jangn sampai Pio mati, ambil air sekarang!",
+        "Jangan sampai Pio mati, ambil air sekarang!",
         "Pio senang kalau Kamu minum air yan cukup",
         "Tubuhmu membutuhkan 135 ml lagi"
     ];
@@ -65,6 +65,12 @@ function kirimNotifikasi() {
 
 function perbaruiKonsumsi() {
     konsumsiSaatIni += jumlahMinumMl;
+
+    let totalKonsumsi = parseInt(localStorage.getItem("totalKonsumsi") || 0);
+    totalKonsumsi += jumlahMinumMl;
+    localStorage.setItem("totalKonsumsi", totalKonsumsi);
+    document.getElementById("totalKonsumsi").innerText = totalKonsumsi;
+
     const tersisa = target - konsumsiSaatIni;
 
     document.getElementById("jumlahSekarang").innerText = konsumsiSaatIni;
@@ -174,6 +180,8 @@ document.addEventListener('DOMContentLoaded', function () {
     kirimNotifikasi();
 
     document.getElementById("jumlahTanaman").innerText = localStorage.getItem("jumlahTanaman") || 0;
+
+    document.getElementById("totalKonsumsi").innerText = localStorage.getItem("totalKonsumsi") || 0;
 
     cekResetHarian();
 
