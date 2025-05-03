@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
         suaraAir.currentTime = 0;
         suaraAir.play();
 
-        perbaruiKonsumsi();
+        await perbaruiKonsumsi();
     });
     
     const menuTanaman = document.querySelector(".menuTanaman");
