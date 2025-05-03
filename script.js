@@ -28,6 +28,13 @@ function bukaDatabase() {
 
         request.onsuccess = function (event) {
             const db = event.target.result;
+            if (!db.objectStoreNames.contains("konsumsiHarian")) {
+                console.error("Object store belum tersedia. Harap refresh halaman.");
+                db.close();
+                reject("Object store belum tersedia.")
+                return;
+            }
+
             resolve(db);
         };
         request.onerror = function () {
