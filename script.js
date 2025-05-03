@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
     cekInactivity();
     setInterval(cekInactivity, 5000);
 
-    document.getElementById("minumBtn").addEventListener("click", function() {
+    document.getElementById("minumBtn").addEventListener("click", async function() {
         await perbaruiKonsumsi();
     });
 });
