@@ -16,16 +16,23 @@ if ('serviceWorker' in navigator) {
 
 function bukaDatabase() {
     return new Promise((resolve, reject) => {
-        const request = indexedDB.open("PiodrinkDB", 2);
+        const request = indexedDB.open("PiodrinkDB", 3);
 
         request.onupgradeneeded = function (event) {
             const db = event.target.result;
             if (!db.objectStoreNames.contains("konsumsiHarian")) {
                 db.createObjectStore("konsumsiHarian", { keyPath: "tanggal" });
+                console.log("Object store 'konsumsiHarian' dibuat")
             }
         };
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
+
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            resolve(db);
+        };
+        request.onerror = function () {
+            reject(request.error);
+        }
     });
 }
 
@@ -38,12 +45,12 @@ function ambilDataHariIni(store, tanggal) {
 }
 
 async function simpanKonsumsiHarian(jumlah) {
-    const db = await bukaDatabase();
-    const tx = db.transaction("konsumsiHarian", "readwrite");
-    const store = tx.objectStore("konsumsiHarian");
-    const tanggal = new Date().toISOString().split("T")[0];
-
     try {
+        const db = await bukaDatabase();
+        const tx = db.transaction("konsumsiHarian", "readwrite");
+        const store = tx.objectStore("konsumsiHarian");
+        const tanggal = new Date().toISOString().split("T")[0];
+
         const data = await ambilDataHariIni(store, tanggal);
         data.total += jumlah;
 
@@ -60,19 +67,19 @@ async function simpanKonsumsiHarian(jumlah) {
     }
 }
 
-//mengecek data
-const request = indexedDB.open("PiodrinkDB", 2);
-
-request.onsuccess = function (event) {
-    const db = event.target.result;
-    const tx = db.transaction("konsumsiHarian", "readonly")
+bukaDatabase().then(db => {
+    const tx = db.transaction("konsumsiHarian", "readonly");
     const store = tx.objectStore("konsumsiHarian");
     const getAll = store.getAll();
 
     getAll.onsuccess = function () {
-        console.log("Data konsumsi harian:", getAll.result)
+        console.log("Data konsumsi harian:", getAll.result);
     };
-};
+
+    tx.oncomplete = () => db.close();
+}).catch(error => {
+    console.error("Gagal membuka database", error);
+});
 
 
 
