@@ -211,6 +211,12 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(cekInactivity, 5000);
 
     document.getElementById("minumBtn").addEventListener("click", async function() {
+        const suaraAir = document.getElementById("suaraAir");
+        suaraAir.style.display = "none";
+
+        suaraAir.currentTime = 0;
+        suaraAir.play();
+
         await perbaruiKonsumsi();
     });
 });
