@@ -17,7 +17,7 @@ if ('serviceWorker' in navigator) {
 let konsumsiSaatIni = 0;
 const target = 2025;
 const jumlahMinumMl = 135;
-const tanggalSaatIni = new Date().toLocaleDateString().split("T")[0];
+const tanggalSaatIni = new Date().toISOString().split("T")[0];
 const maksInactiveDurasi = 24 * 60 * 60 * 1000;
 let notifInterval;
 
@@ -211,6 +211,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(cekInactivity, 5000);
 
     document.getElementById("minumBtn").addEventListener("click", function() {
-        perbaruiKonsumsi();
+        await perbaruiKonsumsi();
     });
 });
