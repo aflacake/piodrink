@@ -147,11 +147,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const analitikTanaman = document.getElementById("analitikTanaman");
     analitikTanaman.style.padding = '20px';
+    analitikTanaman.style.marginBottom = '20px';
     analitikTanaman.style.border = "2px solid #ccc";
     analitikTanaman.style.borderRadius = '15px';
+
+    const totalAirMinum = document.getElementById("totalAirMinum");
+    totalAirMinum.style.padding = '20px';
+    totalAirMinum.style.border = "2px solid #ccc";
+    totalAirMinum.style.borderRadius = '15px';
     
     
-    
+
     document.querySelector("footer").style.padding = '20px';
     document.querySelector("footer").style.color = "#80ff80";
     document.querySelector("footer").style.backgroundColor = "#01b23b";
