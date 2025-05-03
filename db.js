@@ -32,3 +32,17 @@ async function simpanKonsumsiHarian(jumlah) {
     store.put(data);
     tx.oncomplete = () => db.close();
 }
+
+//mengecek data
+const request = indexedDB.open("PiodrinkDB", 1);
+
+request.onsuccess = function (event) {
+    const db = event.target.result;
+    const tx = db.transaction("konsumsiHarian", "readonly")
+    const store = tx.objectStore("konsumsiHarian");
+    const getAll = store.getAll();
+
+    getAll.onsuccess = function () {
+        console.log("Data konsumsi harian:", getAll.result)
+    };
+};
