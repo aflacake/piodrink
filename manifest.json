@@ -1,0 +1,15 @@
+{
+  "name": "piodrink-minum-air-putih",
+  "short_name": "piodrink",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#80ff80",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

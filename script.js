@@ -1,3 +1,19 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+    .then(function(reg) {
+        console.log("Service worker terdaftar.", reg);
+
+        navigator.serviceWorker.ready.then(function(reg) {
+            console.log("Service worker sudah aktif dan sudah siap:", reg);
+        });
+    })
+    .catch(function(error) {
+        console.error("Gagal mendaftarkan service worker:", error)
+    });
+}
+
+
+
 let konsumsiSaatIni = 0;
 const target = 2025;
 const jumlahMinumMl = 135;
