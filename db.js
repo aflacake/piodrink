@@ -1,11 +1,13 @@
 
 function bukaDatabase() {
     return new Promise((resolve, reject) => {
-        const request = indexedDB.open("PiodrinkDB", 1);
+        const request = indexedDB.open("PiodrinkDB", 2);
 
         request.onupgradeneeded = function (event) {
             const db = event.target.result;
-            db.createObjectStore("konsumsiHarian", { keyPath: "tanggal" });
+            if (!db.objectStoreNames.contains("konsumsiHarian")) {
+                db.createObjectStore("konsumsiHarian", { keyPath: "tanggal" });
+            }
         };
         request.onsuccess = () => resolve(request.result);
         request.onerror = () => reject(request.error);
@@ -26,15 +28,25 @@ async function simpanKonsumsiHarian(jumlah) {
     const store = tx.objectStore("konsumsiHarian");
     const tanggal = new Date().toISOString().split("T")[0];
 
-    const data = await ambilDataHariIni(store, tanggal);
-    data.total += jumlah;
+    try {
+        const data = await ambilDataHariIni(store, tanggal);
+        data.total += jumlah;
 
-    store.put(data);
-    tx.oncomplete = () => db.close();
+        store.put(data);
+
+        tx.oncomplete = () => db.close();
+        tx.onerror = () => {
+            console.error("Transaksi gagal");
+            db.close(); 
+        };
+    } catch (error) {
+        console.error("Error saat menyimpan konsumsi harian:", error);
+        db.close();
+    }
 }
 
 //mengecek data
-const request = indexedDB.open("PiodrinkDB", 1);
+const request = indexedDB.open("PiodrinkDB", 2);
 
 request.onsuccess = function (event) {
     const db = event.target.result;
