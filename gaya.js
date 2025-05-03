@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.margin = '0';
     document.body.style.padding = '0';
     document.body.style.fontFamily = "Times New Roman";
-    const gambarLb = 'https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakang.png';
+    const gambarLb = 'https://raw.githubusercontent.com/aflacake/piodrink/main/img/latarbelakang.png';
     document.body.style.backgroundImage = `url(${gambarLb})`;
 
    
