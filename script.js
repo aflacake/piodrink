@@ -81,8 +81,9 @@ function kirimNotifikasi() {
 }
 
 
-function perbaruiKonsumsi() {
+async function perbaruiKonsumsi() {
     konsumsiSaatIni += jumlahMinumMl;
+    await simpanKonsumsiHarian(jumlahMinumMl);
 
     let totalKonsumsi = parseInt(localStorage.getItem("totalKonsumsi") || 0);
     totalKonsumsi += jumlahMinumMl;
