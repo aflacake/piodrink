@@ -1,11 +1,11 @@
 self.addEventListener('push', function(event) {
-    const data = { title: "Piodrink", body: "Waktunya minum!" };
+    let data = { title: "Piodrink", body: "Waktunya minum!" };
 
     if(event.data) {
         try {
-            let data = { title: "Piodrink", body: "Waktunya minum!" };
+            data = event.data.json();
         } catch (e) {
-            console.error("Data push tidak valid", e)
+            console.error("Data push tidak valid", e);
         }
     }
 
@@ -23,7 +23,7 @@ self.addEventListener('notificationclick', function(event) {
     event.waitUntil(
         clients.matchAll({ type: 'window' }).then(clientList => {
             for (const client of clientList) {
-                if (clien.url === '/' && 'focus' in client) return client.focus();
+                if (client.url === '/' && 'focus' in client) return client.focus();
             }
             if (clients.openWindow) return clients.openWindow('/');
         })
