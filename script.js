@@ -147,10 +147,6 @@ function kirimNotifikasi() {
                 icon: "https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png"
             });
         });
-
-        if (navigator.vibrate) {
-            navigator.vibrate([200, 100, 200]);
-        }
     } else {
         console.log("Izin notifikasi tidak diberikan");
     }
