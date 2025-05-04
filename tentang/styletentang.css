@@ -1,3 +1,7 @@
 .content {
     margin-right: 60px;
 }
+
+.checked {
+    color: #01b23b;
+}
