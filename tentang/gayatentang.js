@@ -62,6 +62,33 @@ document.addEventListener('DOMContentLoaded', function () {
         link.style.color = "#01b23b";
     });
 
+    const penilaian = document.querySelector(".penilaian");
+    penilaian.style.padding = '20px';
+    penilaian.style.margin = '20px';
+    penilaian.style.border = "2px solid #ccc";
+    penilaian.style.borderRadius = '15px';
+
+    const kontenPenilaian = document.getElementById("kontenPenilaian");
+    kontenPenilaian.style.display = "flex";
+    kontenPenilaian.style.flexDirection = "row";
+    kontenPenilaian.style.padding = '20px';
+    kontenPenilaian.style.margin = '20px';
+    kontenPenilaian.style.border = "2px solid #ccc";
+    kontenPenilaian.style.borderRadius = '15px';
+
+    const rating = document.querySelector(".rating");
+    rating.style.marginTop = '25px';
+
+//    const ratingBintang = document.querySelectorAll(".rating .checked");
+//    console.log("Jumlah bintang ditemukan:", ratingBintang.length);
+//    ratingBintang.forEach(star => {
+//        if (star && star.style) {
+//        ratingBintang.style.color = "#01b23b";
+//        }
+//    });
+
+
+
     document.querySelector("footer").style.padding = '20px';
     document.querySelector("footer").style.color = "#80ff80";
     document.querySelector("footer").style.backgroundColor = "#01b23b";
