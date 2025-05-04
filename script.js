@@ -133,8 +133,9 @@ function kirimNotifikasi() {
         "Tubuhmu butuh air, ambil air sekarang!",
         "Minum air biar tetap fokus",
         "Jangan sampai Pio mati, ambil air sekarang!",
-        "Pio senang kalau Kamu minum air yan cukup",
-        "Tubuhmu membutuhkan 135 ml lagi"
+        "Pio senang kalau Kamu minum air yang cukup",
+        "Tubuhmu membutuhkan 135 ml lagi",
+        "Sekarang ambil gelas minumlah"
     ];
     
     const notifAcak = pesanMotivasi[Math.floor(Math.random() * pesanMotivasi.length)];
