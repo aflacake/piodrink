@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const kontenPenilaian = document.getElementById("kontenPenilaian");
     kontenPenilaian.style.display = "flex";
-    kontenPenilaian.style.flexDirection = "row";
+    kontenPenilaian.style.flexDirection = "column";
     kontenPenilaian.style.padding = '20px';
     kontenPenilaian.style.margin = '20px';
     kontenPenilaian.style.border = "2px solid #ccc";
@@ -86,6 +86,18 @@ document.addEventListener('DOMContentLoaded', function () {
 //        ratingBintang.style.color = "#01b23b";
 //        }
 //    });
+
+    const listshare = document.querySelector(".listshare");
+    listshare.style.padding = '20px';
+    listshare.style.margin = '20px';
+    listshare.style.border = "2px solid #ccc";
+    listshare.style.borderRadius = '15px';
+    
+    const links = listshare.querySelectorAll("a");
+    links.forEach(link => {
+        link.style.textDecoration = "none";
+        link.style.color = "#01b23b";
+    });
 
 
 
