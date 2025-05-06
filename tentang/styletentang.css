@@ -2,6 +2,6 @@
     margin-right: 60px;
 }
 
-progress::webkit-progress-value {
-    backgroud-color: var(--progress-bar-color)
+.checked {
+    color: #01b23b;
 }
