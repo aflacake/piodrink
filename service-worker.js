@@ -1,3 +1,18 @@
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open('v1').then((cache) => {
+            return cache.addAll([
+                'index.html',
+                'style.css',
+                'script.js',
+                'https://raw.githubusercontent.com/aflacake/piodrink/main/img/pio.png',
+            ]);
+        })
+    );
+});
+
+
+
 self.addEventListener('push', function(event) {
     let data = { title: "Piodrink", body: "Waktunya minum!" };
 
