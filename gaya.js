@@ -66,17 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const kontenPopUpNotifP = document.querySelector(".popUpNotif > p");
     kontenPopUpNotifP.paddingTop = '10px';
-
-    const kontenPio = document.querySelector(".konten");
-    kontenPio.style.padding = '20px';
-    kontenPio.style.margin = '20px';
-    kontenPio.style.backgroundColor = "white";
-    kontenPio.style.border = "2px solid #ccc"
-    kontenPio.style.borderRadius = '15px';
-    
-    const pKontenPioNotif = document.querySelector(".konten > #kontenNotifPio");
-    pKontenPioNotif.style.borderLeft = "8px solid #01b23b";
-    pKontenPioNotif.style.paddingLeft = '8px';
     
     
     const container = document.querySelector(".container");
