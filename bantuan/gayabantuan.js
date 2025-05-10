@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.margin = '0';
     document.body.style.padding = '0';
     document.body.style.fontFamily = "Times New Roman";
-    document.body.style.backgroundColor = "";
+    document.body.style.backgroundColor = "white";
 
    const navbar = document.getElementById("navbar");
    
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
    linkNavbar.forEach(link => {
        link.style.display = "block";
        link.style.width = '100%';
-       link.style.paddingTop = '20px';
+       link.style.marginTop = '20px';
        link.style.color = "";
        link.style.textDecoration = "none";
        
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const navbarAirPutih = document.getElementById("navbarAirPutih");
     navbarAirPutih.style.display = "block";
-    navbarAirPutih.style.marginTop = '50vh';
+    navbarAirPutih.style.marginTop = '40vh';
     navbarAirPutih.style.width = '100%';
     navbarAirPutih.style.paddingTop = '20px';
 
@@ -51,6 +51,17 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector("header > p").style.marginTop = '-20px';
     document.querySelector("header").style.color = "#80ff80";
     document.querySelector("header").style.backgroundColor = "#01b23b";
+
+    const kontenPio = document.querySelector(".konten");
+    kontenPio.style.padding = '20px';
+    kontenPio.style.margin = '20px';
+    kontenPio.style.backgroundColor = "white";
+    kontenPio.style.border = "2px solid #ccc"
+    kontenPio.style.borderRadius = '15px';
+    
+    const pKontenPioNotif = document.querySelector(".konten > #kontenNotifPio");
+    pKontenPioNotif.style.borderLeft = "8px solid #01b23b";
+    pKontenPioNotif.style.paddingLeft = '8px';
 
     const kontenPertanyaan = document.querySelector(".pertanyaan");
     kontenPertanyaan.style.padding = '20px';

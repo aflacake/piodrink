@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.margin = '0';
     document.body.style.padding = '0';
     document.body.style.fontFamily = "Times New Roman";
-    document.body.style.backgroundColor = "";
+    document.body.style.backgroundColor = "white";
 
    const navbar = document.getElementById("navbar");
    
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
    linkNavbar.forEach(link => {
        link.style.display = "block";
        link.style.width = '100%';
-       link.style.paddingTop = '20px';
+       link.style.marginTop = '20px';
        link.style.color = "";
        link.style.textDecoration = "none";
        
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const navbarAirPutih = document.getElementById("navbarAirPutih");
     navbarAirPutih.style.display = "block";
-    navbarAirPutih.style.marginTop = '50vh';
+    navbarAirPutih.style.marginTop = '40vh';
     navbarAirPutih.style.width = '100%';
     navbarAirPutih.style.paddingTop = '20px';
 

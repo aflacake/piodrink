@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.margin = '0';
     document.body.style.padding = '0';
     document.body.style.fontFamily = "Times New Roman";
-    const gambarLb = 'https://raw.githubusercontent.com/aflacake/piodrink/main/img/latarbelakang.png';
-    document.body.style.backgroundImage = `url(${gambarLb})`;
 
    
    const navbar = document.getElementById("navbar");
@@ -25,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
    linkNavbar.forEach(link => {
        link.style.display = "block";
        link.style.width = '100%';
-       link.style.paddingTop = '20px';
+       link.style.marginTop = '20px';
        link.style.color = "";
        link.style.textDecoration = "none";
        
@@ -40,9 +38,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const navbarAirPutih = document.getElementById("navbarAirPutih");
     navbarAirPutih.style.display = "block";
-    navbarAirPutih.style.marginTop = '50vh';
+    navbarAirPutih.style.marginTop = '40vh';
     navbarAirPutih.style.width = '100%';
     navbarAirPutih.style.paddingTop = '20px';
+
+
+
+    // background berdasarkan waktu
+    function setBackgroundBerdasarkanWaktu() {
+        const bgWaktuSaatIni = new Date().getHours();
+        const background = document.querySelector(".background");
+        console.log(background);
+
+        if (!background) return;
+    
+        if (bgWaktuSaatIni >= 6 && bgWaktuSaatIni < 12) {
+            background.classList.add("pagi");
+        } else if (bgWaktuSaatIni >= 12 && bgWaktuSaatIni < 15) {
+            background.classList.add("siang");
+        } else if (bgWaktuSaatIni >= 15 && bgWaktuSaatIni < 18) {
+            background.classList.add("sore");
+        } else {
+            background.classList.add("malam");
+            const containerDarkMode = document.querySelector(".container");
+            const menuTanamanDarkMode = document.querySelector(".menuTanaman");
+
+            if (containerDarkMode) containerDarkMode.style.color = "white";
+            if (menuTanamanDarkMode) menuTanamanDarkMode.style.color = "white";
+        }
+    }
+    window.addEventListener("DOMContentLoaded", setBackgroundBerdasarkanWaktu);
 
     document.querySelector("header").style.display = "flex";
     document.querySelector("header").style.flexDirection = "column"
@@ -66,17 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const kontenPopUpNotifP = document.querySelector(".popUpNotif > p");
     kontenPopUpNotifP.paddingTop = '10px';
-
-    const kontenPio = document.querySelector(".konten");
-    kontenPio.style.padding = '20px';
-    kontenPio.style.margin = '20px';
-    kontenPio.style.backgroundColor = "white";
-    kontenPio.style.border = "2px solid #ccc"
-    kontenPio.style.borderRadius = '15px';
-    
-    const pKontenPioNotif = document.querySelector(".konten > #kontenNotifPio");
-    pKontenPioNotif.style.borderLeft = "8px solid #01b23b";
-    pKontenPioNotif.style.paddingLeft = '8px';
     
     
     const container = document.querySelector(".container");
