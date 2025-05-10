@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.margin = '0';
     document.body.style.padding = '0';
     document.body.style.fontFamily = "Times New Roman";
-    document.body.style.backgroundColor = "";
+    document.body.style.backgroundColor = "white";
 
    const navbar = document.getElementById("navbar");
    
