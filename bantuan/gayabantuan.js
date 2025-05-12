@@ -42,15 +42,18 @@ document.addEventListener('DOMContentLoaded', function () {
     navbarAirPutih.style.width = '100%';
     navbarAirPutih.style.paddingTop = '20px';
 
-    document.querySelector("header").style.display = "flex";
-    document.querySelector("header").style.flexDirection = "column"
-    document.querySelector("header").style.textAlign = "center";
-    document.querySelector("header").style.justifyContent = "center";
-    document.querySelector("header").style.borderBottom = "8px solid #80ff80"
-    document.querySelector("header").style.padding = '20px';
-    document.querySelector("header > p").style.marginTop = '-20px';
-    document.querySelector("header").style.color = "#80ff80";
-    document.querySelector("header").style.backgroundColor = "#01b23b";
+    const header = document.querySelector("header");
+    header.style.cssText = `
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        border-bottom: 8px solid #80ff80;
+        padding: 20px;
+        margin-top: -20px;
+        color: #404040;
+        background-color: #01b23b;
+    `;
 
     const kontenPio = document.querySelector(".konten");
     kontenPio.style.padding = '20px';
@@ -82,8 +85,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    document.querySelector("footer").style.padding = '20px';
-    document.querySelector("footer").style.color = "#80ff80";
-    document.querySelector("footer").style.backgroundColor = "#01b23b";
-    document.querySelector("footer").style.borderTop = "8px solid #80ff80";
+    const footer = document.querySelector("footer");
+    footer.style.cssText = `
+        padding: 20px;
+        color: #404040;
+        background-color: #01b23b;
+        border-top: 8px solid #80ff80;
+    `;
 });
