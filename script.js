@@ -14,6 +14,11 @@ if ('serviceWorker' in navigator) {
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("minumBtn");
+    console.log("Tombol ditemukan?", !!btn);
+});
+
 function bukaDatabase() {
     return new Promise((resolve, reject) => {
         const request = indexedDB.open("PiodrinkDB", 3);
@@ -52,8 +57,9 @@ function ambilDataHariIni(store, tanggal) {
 }
 
 async function simpanKonsumsiHarian(jumlah) {
+    let db;
     try {
-        const db = await bukaDatabase();
+        db = await bukaDatabase();
         const tx = db.transaction("konsumsiHarian", "readwrite");
         const store = tx.objectStore("konsumsiHarian");
         const tanggal = new Date().toISOString().split("T")[0];
@@ -70,7 +76,7 @@ async function simpanKonsumsiHarian(jumlah) {
         };
     } catch (error) {
         console.error("Error saat menyimpan konsumsi harian:", error);
-        db.close();
+        if (db) db.close;
     }
 }
 
@@ -98,24 +104,20 @@ const maksInactiveDurasi = 24 * 60 * 60 * 1000;
 let notifInterval;
 
 function memintaIzinNotifikasi() {
-    if (notifInterval) {
-        clearInterval(notifInterval);
-    }
     if (Notification.permission !== "granted") {
         Notification.requestPermission().then(permission => {
             if (permission === "granted") {
                 console.log("Izin notifkasi sudah diberikan");
-                if (!notifInterval) {
-                    notifInterval = setInterval(kirimNotifikasi, 3600000);
-                }
-            } else {
-                console.warn("Izin notfikasi ditolak");
+                    mulaiNotifikasi();
             }
         });
     } else {
-        if (!notifInterval) {
-            notifInterval = setInterval(kirimNotifikasi, 3600000);
-        }
+        mulaiNotifikasi();
+    }
+}
+function mulaiNotifikasi() {
+    if (!notifInterval) {
+        notifInterval = setInterval(kirimNotifikasi, 3600000);
     }
 }
 
@@ -206,22 +208,34 @@ async function perbaruiKonsumsi() {
 
 function aktifkanTombol() {
     const minumBtn = document.getElementById("minumBtn");
+    if (!minumBtn) {
+        console.error("Tombol minum tidak ditemukan saat mengaktifkan");
+        return;
+    }
+
     minumBtn.disabled = false;
     minumBtn.innerText = "Beri Pio Minum";
 }
 
 function cekStatusTombol() {
     const waktuSimpan = parseInt(localStorage.getItem("tombolDisabledSampai") || 0);
-    const sekarang = new Date().getTime();
+    const sekarang = Date.now();
 
     const btn = document.getElementById("minumBtn");
+    if (!btn) {
+        console.error("Tombol minum tidak ditemukan saat cek status");
+        return;
+    }
 
     if (sekarang < waktuSimpan) {
+        console.log("Tombol masih dinonaktifkan.");
         btn.disabled = true;
         btn.innerText = "Tunggu 1 jam...";
 
-        setTimeout(aktifkanTombol, waktuSimpan - sekarang);
+        const waktuTersisa = waktuSimpan - sekarang;
+        setTimeout(aktifkanTombol, waktuTersisa);
     } else {
+        console.log("Tombol aktif.");
         aktifkanTombol();
     }
 }
@@ -269,8 +283,14 @@ function cekInactivity() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById("minumBtn");
+    const suaraAir = document.getElementById("suaraAir");
+    if (!btn || !suaraAir) {
+        console.error("Tombol atau elemen suara tidak ditemukan.");
+        return;
+    }
+
     memintaIzinNotifikasi();
-    kirimNotifikasi();
 
     document.getElementById("jumlahTanaman").innerText = localStorage.getItem("jumlahTanaman") || 0;
 
@@ -284,11 +304,14 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(cekInactivity, 5000);
 
     document.getElementById("minumBtn").addEventListener("click", async function() {
+        console.log("Tombol diklik.");
         const suaraAir = document.getElementById("suaraAir");
         suaraAir.style.display = "none";
 
         suaraAir.currentTime = 0;
-        suaraAir.play();
+        suaraAir.play().catch(error => {
+            console.warn("Gagal memutar suara: ", error);
+        });
 
         await perbaruiKonsumsi();
     });
