@@ -81,10 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
         justify-content: center;
         border-bottom: 8px solid #80ff80;
         padding: 20px;
-        margin-top: -20px;
         color: #404040;
         background-color: #01b23b;
     `;
+     document.querySelector("header > p").style.marginTop = '-20px';
     
     
     const kontenPopUpNotif = document.querySelector(".popUpNotif");
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function () {
     kontenPopUpNotif.style.borderRadius = "15px";
 
     const kontenPopUpNotifP = document.querySelector(".popUpNotif > p");
-    kontenPopUpNotifP.paddingTop = '10px';
+    kontenPopUpNotifP.style.paddingTop = '10px';
     
     
     const container = document.querySelector(".container");
