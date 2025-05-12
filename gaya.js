@@ -43,36 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
     navbarAirPutih.style.paddingTop = '20px';
 
 
-
-    // background berdasarkan waktu
-    function setBackgroundBerdasarkanWaktu() {
-        const bgWaktuSaatIni = new Date().getHours();
-        const background = document.querySelector(".background");
-        console.log(background);
-
-        if (!background) return;
-    
-        let backgroundUrl = '';
-        if (bgWaktuSaatIni >= 6 && bgWaktuSaatIni < 12) {
-            background.classList.add("pagi");
-        } else if (bgWaktuSaatIni >= 12 && bgWaktuSaatIni < 15) {
-            background.classList.add("siang");
-        } else if (bgWaktuSaatIni >= 15 && bgWaktuSaatIni < 18) {
-            background.classList.add("sore");
-        } else {
-            background.classList.add("malam");
-
-            const containerDarkMode = document.querySelector(".container");
-            const menuTanamanDarkMode = document.querySelector(".menuTanaman");
-
-            if (containerDarkMode) containerDarkMode.style.color = "white";
-            if (menuTanamanDarkMode) menuTanamanDarkMode.style.color = "white";
-        }
-    }
-    window.addEventListener("DOMContentLoaded", setBackgroundBerdasarkanWaktu);
-
-
-
     const header = document.querySelector("header");
     header.style.cssText = `
         display: flex;
