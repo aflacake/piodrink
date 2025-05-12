@@ -52,22 +52,58 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (!background) return;
     
+        let backgroundUrl = '';
         if (bgWaktuSaatIni >= 6 && bgWaktuSaatIni < 12) {
             background.classList.add("pagi");
+            backgroundUrl = 'https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangpagihari.png';
         } else if (bgWaktuSaatIni >= 12 && bgWaktuSaatIni < 15) {
             background.classList.add("siang");
+            backgroundUrl = 'https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangsianghari.png';
         } else if (bgWaktuSaatIni >= 15 && bgWaktuSaatIni < 18) {
             background.classList.add("sore");
+            backgroundUrl = 'https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangsorehari.png';
         } else {
             background.classList.add("malam");
+            backgroundUrl = 'https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangmalamhari.png';
+
             const containerDarkMode = document.querySelector(".container");
             const menuTanamanDarkMode = document.querySelector(".menuTanaman");
 
             if (containerDarkMode) containerDarkMode.style.color = "white";
             if (menuTanamanDarkMode) menuTanamanDarkMode.style.color = "white";
         }
+        gantiLatarBelakangDenganTransisi(backgroundUrl)
     }
     window.addEventListener("DOMContentLoaded", setBackgroundBerdasarkanWaktu);
+
+    function gantiLatarBelakangDenganTransisi(url) {
+        const background = document.querySelector(".background");
+
+        if (!background) return;
+
+        let styleElement = document.getElementById("dynamic-bg-style");
+        if (styleElement) styleElement.remove();
+
+        styleElement = document.createElement("style");
+        styleElement.id = "dynamic-bg-style";
+        styleElement.innerHTML = `
+            .background::before {
+                background-image: url('${url}');
+                opacity: 0;
+                transition: opacity 2s ease;
+            }
+        `;
+        document.head.appendChild(styleElement);
+
+        requestAnimationFrame(() => {
+            styleElement.innerHTML = `
+                .background::before {
+                    background-image: url('${url}');
+                    opacity: 1;
+                }
+            `;
+        });
+    }
 
     document.querySelector("header").style.display = "flex";
     document.querySelector("header").style.flexDirection = "column"
@@ -76,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector("header").style.borderBottom = "8px solid #80ff80"
     document.querySelector("header").style.padding = '20px';
     document.querySelector("header > p").style.marginTop = '-20px';
-    document.querySelector("header").style.color = "#80ff80";
+    document.querySelector("header").style.color = "#404040";
     document.querySelector("header").style.backgroundColor = "#01b23b";
     
     
@@ -163,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     document.querySelector("footer").style.padding = '20px';
-    document.querySelector("footer").style.color = "#80ff80";
+    document.querySelector("footer").style.color = "#404040";
     document.querySelector("footer").style.backgroundColor = "#01b23b";
     document.querySelector("footer").style.borderTop = "8px solid #80ff80";
     
