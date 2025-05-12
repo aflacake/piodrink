@@ -13,41 +13,12 @@ body {
 .content {
     margin-right: 60px;
 }
-.background {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: -1;
-}
-.background::before {
-    content: "";
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 2s ease;
-    z-index: -1;
-}
 
-.pagi {
-    background-image: url('https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangpagihari.png');
-}
-.siang {
-   background-image: url('https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangsianghari.png'); 
-}
-.sore {
-    background-image: url('https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangsorehari.png');
-}
-.malam {
-    background-image: url('https://raw.githubusercontent.com/aflacake/piodrink/second/img/latarbelakangmalamhari.png');
+
+#minumBtn {
+    position: relative;
 }
 
 progress::webkit-progress-value {
-    backgroud-color: var(--progress-bar-color)
+    background-color: var(--progress-bar-color)
 }
