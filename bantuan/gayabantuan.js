@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function () {
         justify-content: center;
         border-bottom: 8px solid #80ff80;
         padding: 20px;
-        margin-top: -20px;
         color: #404040;
         background-color: #01b23b;
     `;
+     document.querySelector("header > p").style.marginTop = '-20px';
 
     const kontenPio = document.querySelector(".konten");
     kontenPio.style.padding = '20px';
