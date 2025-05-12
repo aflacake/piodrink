@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector("header").style.borderBottom = "8px solid #80ff80"
     document.querySelector("header").style.padding = '20px';
     document.querySelector("header > p").style.marginTop = '-20px';
-    document.querySelector("header").style.color = "#80ff80";
+    document.querySelector("header").style.color = "#404040";
     document.querySelector("header").style.backgroundColor = "#01b23b";
     
     
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     document.querySelector("footer").style.padding = '20px';
-    document.querySelector("footer").style.color = "#80ff80";
+    document.querySelector("footer").style.color = "#404040";
     document.querySelector("footer").style.backgroundColor = "#01b23b";
     document.querySelector("footer").style.borderTop = "8px solid #80ff80";
     
